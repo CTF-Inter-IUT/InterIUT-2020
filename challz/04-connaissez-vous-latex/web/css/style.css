@@ -1,0 +1,102 @@
+body {
+	margin: 0;
+	box-sizing: border-box;
+
+	background-color: #272822;
+	width: 70%;
+	margin: auto;
+}
+
+body * {
+	color: #fff;
+    font-family: 'Fira Code', 'Fira Sans', sans-serif;
+}
+
+/* Index style */
+.menu-elt {
+	position: absolute;
+	right: 10px;
+	z-index: 10;
+
+	outline: none;
+	text-decoration: none;
+	background-color: #34352e;
+	text-align: center;
+}
+
+input[type=submit] {
+	top: 10px;
+
+	border: 2px solid #f92672;
+	padding: 5px 10px 5px 10px;
+}
+
+a.menu-elt {
+	top: 50px;
+	height: 20px;
+	width: 20px;
+
+	border-radius: 50%;
+	padding: 4px;
+	border: 2px solid #f92672;
+}
+
+/* Info style */
+h1 {
+	text-align: center;
+	padding-top: 2em;
+}
+
+h1, h2 {
+	color: #f92672;
+}
+
+p {
+	text-align: justify;
+}
+
+div.CodeMirror {
+	position: absolute;
+	left: 0;
+	width: 50%;
+	border-right: 3px solid #f92672;
+}
+
+iframe {
+	position: absolute;
+	right: 0;
+	width: 50%;
+	height: 100%;
+}
+
+iframe pre {
+	color: #fff;
+}
+
+footer {
+	display: flex;
+	justify-content: center;
+
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+
+	background-color: #34352e;
+	padding: 2em 0 2em 0;
+}
+
+footer p {
+	margin-left: 2em;
+	width: 32%;
+}
+
+footer img {
+	grid-row: 1;
+	grid-column: 1;
+	width: 15%;
+	width: 15%;
+	border-radius: 100%;
+	border: 3px solid #f92672;
+}
+

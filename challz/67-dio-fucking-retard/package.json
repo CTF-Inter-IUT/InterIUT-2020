@@ -1,0 +1,27 @@
+{
+  "name": "@interiut/67-dio-chat",
+  "version": "1.0.0",
+  "author": "Adam LE BON <lebon.adam@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"tsc -w\" \"nodemon dist/server.js\""
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.2",
+    "@types/express": "^4.17.6",
+    "@types/mongodb": "^3.5.8",
+    "@types/uuid": "^7.0.2",
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.3",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.6",
+    "uuid": "^7.0.3"
+  }
+}

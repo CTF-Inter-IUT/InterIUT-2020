@@ -1,0 +1,62 @@
+{
+    "builders": [
+        {
+            "type": "vsphere-iso",
+            "vm_name": "Alpine-interiut",
+            "convert_to_template": true,
+
+            "vcenter_server": "vsphere.interiut.ctf",
+            "datacenter": "Datacenter",
+            "host": "192.168.1.7",
+            "username": "administrator@interiut.ctf",
+            "password": "sljdfbsdkjfds",
+            "insecure_connection": true,
+
+            "guest_os_type": "ubuntu64Guest",
+            "CPUs": 4,
+            "RAM": 2048,
+            "RAM_reserve_all": false,
+
+            "disk_controller_type": "pvscsi",
+            "storage": [
+                {
+                    "disk_size": 5000,
+                    "disk_thin_provisioned": true
+                }
+            ],
+
+            "network_adapters": [
+                {
+                    "network": "interiut-network",
+                    "network_card": "vmxnet3"
+                }
+            ],
+
+            "ssh_username": "interiut",
+            "ssh_password": "interiut",
+
+            "iso_paths": [
+                "[datastore1] ubuntu-20.04-live-server-amd64.iso"
+            ],
+
+            "floppy_files": [
+                "{{template_dir}}/user-data"
+            ],
+            "floppy_label": "cidata",
+
+            "boot_wait": "2s",
+            "boot_command": [
+                "<enter><wait><enter><wait><f6><wait><esc><wait> ",
+                "<bs><bs><bs><bs><bs> autoinstall ds=nocloud-net;s=https://ubuntu-2004-cloud-init.s3.beryju.org/",
+                "<enter><wait>"
+            ]
+        }
+    ],
+
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": ["curl -sSL https://raw.githubusercontent.com/vmware/cloud-init-vmware-guestinfo/master/install.sh | sudo sh -"]
+        }
+    ]
+}

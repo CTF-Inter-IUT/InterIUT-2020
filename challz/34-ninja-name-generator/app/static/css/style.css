@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Shade&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root{
+    --grey: #4c4c4c;
+    --red: #ce050f;
+}
+
+body {
+    background-image: url('/static/img/background.jpeg');
+    height:70vh;
+    background-position:center;
+}
+
+h1 {
+    font-family: 'Bungee Shade', cursive;
+    background-color: var(--red);
+    width:20%;
+    font-size:2.2em;
+    margin:auto;
+    margin-top: 25px;
+    text-align: center;
+    padding: 20px 0;
+    color: white;
+    transform: rotate(-2deg);
+}
+
+h2 {
+    background-color: var(--grey);
+    width:45%;
+    font-size: 1.3em;
+    margin:auto;
+    text-align:center;
+    padding:18px 24px;
+    color: white;
+}
+
+input {
+    border:3px solid var(--red);
+    color:white;
+    background-color:grey;
+    padding:8px 12px
+}
+
+p {
+    margin:15px;
+    padding:15px;
+}
+
+#ninja_name {
+    text-transform: uppercase;
+    text-shadow: 0 0 10px white;
+    
+}
+

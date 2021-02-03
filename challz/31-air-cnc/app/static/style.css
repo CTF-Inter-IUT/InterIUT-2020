@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css?family=Public+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Public Sans', sans-serif;
+}
+
+:root {
+  --dark-blue: #007bff;
+  --blue: #66afff;
+  --dark-green: #28a745;
+  --green: #7eca8f;
+  --dark-orange: #ffa000;
+  --orange: #ffc070;
+  
+  --dark-grey: #414141;
+  --grey: #999;
+  --light-grey: #bbb;
+  --dark-white: #f6f6f6;
+  --white: white;
+}
+
+html, body
+{
+  height: 100%;
+}
+
+body
+{
+  display: flex;
+  flex-direction: column;
+}
+
+header
+{
+  padding: 15px 0;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--dark-grey);
+  color: var(--white);
+}
+
+header > #logo
+{
+  display: flex;
+}
+
+header > #logo > img
+{
+  margin: 5px;
+}
+
+header > #logo > p
+{
+  margin: auto;
+  font-size: 1.5em;
+}
+
+header > nav a
+{
+  font-size: 1.1em;
+  text-decoration: none;
+  color: var(--grey);
+  padding: 5px;
+  margin: 10px;
+  transition: .6s;
+}
+
+header > nav a:hover
+{
+  color: var(--white);
+}
+
+body > div
+{
+  margin: 40px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 3px solid var(--light-grey);
+  background-color: var(--dark-white);
+  display: flex;
+  justify-content: space-around;
+}
+
+body > div > h1
+{
+  margin: 15px;
+  font-family: 'Bebas Neue', cursive;
+}
+
+#stats > .stats
+{
+  padding: 30px;
+  border-radius: 8px;
+  color: var(--white);
+}
+
+#stats > .stats:nth-child(2)
+{
+  border: 4px solid var(--dark-blue);
+  background-color: var(--blue);
+}
+
+#stats > .stats:nth-child(3)
+{
+  border: 4px solid var(--dark-green);
+  background-color: var(--green);
+}
+
+#stats > .stats:nth-child(4)
+{
+  border: 4px solid var(--dark-orange);
+  background-color: var(--orange);
+}
+
+#stats > .stats > p > span
+{
+  font-size: 1.4em;
+}
+
+#bot-list > table
+{
+  width: 60vw;
+  border-collapse: collapse;
+  border: 2px solid var(--light-grey);
+}
+
+#bot-list > table th, td
+{
+  padding: 12px;
+  border: 2px solid var(--light-grey);
+}
+
+#bot-list > table tr:nth-child(2n)
+{
+  background-color: #e0e0e0;
+}
+
+#command form
+{
+  display: flex;
+  align-items: center;
+}
+
+#command > form > input
+{
+  padding: 8px 22px;
+  background-color: var(--light-grey);
+  color: var(--dark-grey);
+  border: 2px solid var(--dark-grey);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: .6s;
+}
+
+#command > form > input:hover
+{
+  background-color: var(--dark-grey);
+  color: var(--white);
+}
+
+footer
+{
+  margin-top: auto;
+  padding: 50px 0;
+  width: 100vw;
+  background-color: var(--dark-grey);
+  text-align: center;
+  color: var(--white);
+  font-size: .8em;
+}

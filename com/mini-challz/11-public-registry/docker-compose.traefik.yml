@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  challenge:
+    build: .
+    restart: unless-stopped
+    networks:
+      - traefik_public
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.challengeRegistry.loadbalancer.server.port=5000
+      - traefik.http.routers.challengeRegistry.rule=Method(`GET`)&&Host(`docker.fakenews.sh`)
+      - traefik.http.routers.challengeRegistry.tls=true
+      - traefik.http.routers.challengeRegistry.tls.certresolver=default
+
+networks:
+  traefik_public:
+    external: true

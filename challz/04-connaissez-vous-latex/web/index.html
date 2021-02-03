@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My PDF Generator</title>
+	<link href="css/style.css" rel="stylesheet">
+
+	<!-- Code mirror imports -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css"  rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.js"></script>
+
+		<!-- Fullscreen -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/addon/display/fullscreen.min.css" rel="stylesheet">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/addon/display/fullscreen.min.js"></script>
+
+		<!-- For LaTeX coloration -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/mode/stex/stex.min.js"></script>
+
+		<!-- Monokai theme -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/theme/monokai.min.css" rel="stylesheet">
+	<!-- Police d'écriture -->
+	<link href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet"> 
+</head>
+<body>
+
+	<form onsubmit="compileLatex(event)">
+		<textarea id="latex-code" name="latex"></textarea>
+		<input type="submit" class="submit menu-elt" value="Générer le PDF">
+	</form>
+
+	<a class="menu-elt" href="#" onclick="showInfo()">?</a>
+
+	<iframe src="/info.html" frameborder="0"></iframe>
+
+	<script>
+		//Editor creation
+		var editor = CodeMirror.fromTextArea(document.getElementById('latex-code'), {
+			lineNumbers: true,
+			fullScreen: true,
+			mode: "stex",
+			theme: "monokai"
+		});
+
+		//Default value for document
+		editor.getDoc().setValue("\\documentclass[10pt]{report}\n\n\\title{Mon PDF}\n\\author{Moi}\n\n\\begin{document}\n\\maketitle\n\n\\end{document}");
+
+		async function compileLatex(event) {
+			event.preventDefault();
+			document.querySelector("iframe").src = await fetch("/generate_pdf.php",{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				},
+				body: "latex=" + editor.getValue()
+			}).then((res) => res.text());
+		}
+
+		function showInfo() {
+			document.querySelector("iframe").src = "/info.html";
+		}
+	</script>
+
+</body>
+</html>

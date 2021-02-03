@@ -1,0 +1,37 @@
+version: '3'
+services:
+        db:
+                image: mysql:5.7
+                container_name: skull_db
+                restart: always
+                environment:
+                        - MYSQL_ROOT_PASSWORD=r00t_w00t!
+                        - MYSQL_DATABASE=database
+                volumes:
+                        - ./db/db.sql:/docker-entrypoint-initdb.d/db.sql
+                ports:
+                        - "3306:3306"
+                networks:
+                    local_net:
+                        ipv4_address: 172.16.0.3
+        web:
+                image: php:7.2-apache
+                container_name: skull_web
+                build:
+                        context: ./web/
+                volumes:
+                        - ./web/app/:/challenge
+                ports:
+                        - "80:80"
+                networks:
+                    local_net:
+                        ipv4_address: 172.16.0.2
+                depends_on:
+                        - db
+
+networks:
+    local_net:
+        ipam:
+            driver: default
+            config:
+                - subnet: "172.16.0.0/29"

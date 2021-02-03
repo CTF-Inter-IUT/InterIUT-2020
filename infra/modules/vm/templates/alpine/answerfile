@@ -1,0 +1,15 @@
+KEYMAPOPTS="us us"
+HOSTNAMEOPTS="-n alpine-template"
+INTERFACESOPTS="auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet dhcp
+    hostname alpine-template
+"
+TIMEZONEOPTS="-z Europe/Paris"
+PROXYOPTS="none"
+APKREPOSOPTS="-1"
+SSHDOPTS="-c openssh"
+NTPOPTS="-c none"
+DISKOPTS="-m sys /dev/sda"

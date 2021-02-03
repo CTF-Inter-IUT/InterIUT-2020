@@ -1,0 +1,12 @@
+{
+  "name": "tool",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "adm-zip": "^0.5.1",
+    "axios": "^0.21.0",
+    "commander": "^6.2.0",
+    "rimraf": "^3.0.2"
+  }
+}

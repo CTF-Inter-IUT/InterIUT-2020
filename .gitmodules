@@ -1,0 +1,5 @@
+[submodule "infra/modules/kubernetes/operator/cant_be_shared_flags"]
+	path = infra/modules/kubernetes/operator/cant_be_shared_flags
+; 	url = git@git.fakenews.sh:fakenews/ctfd/cant_be_shared_flags.git
+	url = https://git.fakenews.sh/fakenews/ctfd/cant_be_shared_flags.git
+	branch = master

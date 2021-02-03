@@ -1,0 +1,18 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - 80:80
+    volumes:
+      - ./app:/challenge
+    depends_on:
+      - database
+
+  database:
+    image: mysql:5
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=password
+    volumes:
+      - ./docker_data:/docker-entrypoint-initdb.d

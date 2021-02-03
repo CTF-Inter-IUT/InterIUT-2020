@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Anonymous+Pro&display=swap');
+
+@font-face {
+    font-family: 'Jojo';
+    src: url('SF\ Fedora.ttf') format('truetype');
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Anonymous Pro';
+}
+
+html {
+    background: linear-gradient(-45deg, rgba(242, 79, 155, 0.2), rgba(242, 79, 155, 0.05));
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+#container {
+    width: 400px;
+    padding: 15px;
+    margin: 100px auto;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+#messages {
+    height: 500px;
+    overflow: auto;
+    font-weight: bold;
+}
+
+#messages .dio {
+    text-align: right;
+    position: relative;
+    background: #fafafa;
+    margin-right: 60px;
+    padding-right: 10px;
+    font-family: 'JoJo';
+    text-shadow: black;
+    color: red;
+    /* text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black; */
+    font-size: 32px;
+    line-height: 40px;
+    background: linear-gradient(#160f46, #af477b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#messages .dio::after {
+    position: absolute;
+    top: -10px;
+    right: -60px;
+    display: inline-block;
+    content: '';
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background: url('dio-best-pp.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+input[type="text"] {
+    font-size: large;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 5px;
+    height: 50px;
+    border: 2px solid black;
+    opacity: 0.5;
+    transition-duration: 0.1s;
+}
+input[type="text"]:focus {
+    opacity: 1;
+
+    outline: none;
+}
+
+input[type="submit"] {
+    display: none;
+}

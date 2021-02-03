@@ -1,0 +1,110 @@
+#!/usr/bin/env python3
+#coding: utf-8
+
+import subprocess
+from os import listdir
+from os.path import isfile, commonpath, basename, dirname
+from sys import argv
+
+BASE_IMG_DIR = 'docker/'
+CHALLS_DIR = 'challz/'
+
+REPO_ROOT = subprocess.run(["git", "rev-parse", "--show-toplevel"], capture_output=True).stdout.decode().strip() + '/'
+CHANGES = subprocess.run(["git", "diff", "--name-only", "--staged"], capture_output=True).stdout.decode().strip().split('\n')
+CHANGES += subprocess.run(["git", "diff", "--name-only", "origin/master..HEAD"], capture_output=True).stdout.decode().strip().split('\n')
+GIT_ACT_PATH = REPO_ROOT + ".github/workflows/docker-publish.yml"
+
+# Read template files used for populating the github action file
+with open(REPO_ROOT + ".githooks/templates/git_act_header.yml", 'r') as f:
+	HEADER = f.read()
+
+with open(REPO_ROOT + ".githooks/templates/git_act_base_build.yml", 'r') as f:
+	BASE_TEMPLATE = f.read()
+
+with open(REPO_ROOT + ".githooks/templates/git_act_chall_build.yml", 'r') as f:
+	CHALL_TEMPLATE = f.read()
+
+
+def get_base_imgs(dockerfile, with_tag=True, with_reg=True):
+	imgs = []
+	with open(dockerfile, 'r') as f:
+		line = 'random_garbage'
+		while line:
+			line = f.readline()
+			if line.startswith('FROM '):
+				img_name = line.split(' ')[1].strip() #FROM >>registry/structure/imagename:tag<< as ALIAS
+				if not with_tag:
+					img_name = img_name.split(':')[0]
+				if not with_reg:
+					img_name = img_name.split('/')[-1]
+				imgs.append(img_name)
+
+	return imgs
+
+challenges = listdir(REPO_ROOT + CHALLS_DIR)
+
+chall_to_ignore = set()
+chall_to_build = set()
+b_img_to_build = set()
+
+for c in CHANGES:
+	if c.startswith(BASE_IMG_DIR):
+		img_name = c.lstrip(BASE_IMG_DIR).split('/')[0]
+		long_name =  "interiut-base-" + img_name
+		b_img_to_build.add(img_name)
+		# Add all the challenges that depends on this image
+		for chall in challenges:
+			chall_dockerfile = REPO_ROOT + CHALLS_DIR + chall + '/Dockerfile'
+			if isfile(chall_dockerfile) \
+				and chall not in chall_to_ignore:
+					if long_name in get_base_imgs(chall_dockerfile, with_reg=False, with_tag=False):
+						no_tag_name = chall.split(':')[0]
+						base_name = no_tag_name.split('/')[-1]#Get the imagename : registry/structure/>>imagename<<:tag
+						chall_to_build.add(chall)
+			else:
+				chall_to_ignore.add(chall)
+
+	elif c.startswith(CHALLS_DIR):
+		chall_name = c.lstrip(CHALLS_DIR).split('/')[0]
+		chall_dockerfile = REPO_ROOT + CHALLS_DIR + chall_name + '/Dockerfile'
+		if isfile(chall_dockerfile):
+			chall_to_build.add(chall_name)
+		else:
+			chall_to_ignore.add(chall_name)
+
+print(f"Regénération du fichier {GIT_ACT_PATH}")
+with open(GIT_ACT_PATH, 'w') as f:
+	f.write(HEADER.format(script_name=argv[0]))
+
+	for base_img in b_img_to_build:
+		print(f"Préparation de la construction de l'image de base {base_img}")
+		# Construction des images de base
+		f.write(BASE_TEMPLATE.format(
+			base_img_name=base_img,
+			path=BASE_IMG_DIR + base_img
+		))
+
+	for chall in chall_to_build:
+		print(f"Préparation de la construction du challenge {chall}")
+
+		deps = ''
+		if chall not in chall_to_ignore:
+			chall_dockerfile = REPO_ROOT + CHALLS_DIR + chall + '/Dockerfile'
+			base_imgs = [ elt.lstrip("interiut-base-") for elt in get_base_imgs(chall_dockerfile, with_reg=False, with_tag=False)]
+
+			for img in base_imgs:
+				if img in b_img_to_build:
+					build_step_name = 'Build_base_' + img
+					if deps != '':
+						deps += "      - " + build_step_name
+					else:
+						deps = "needs:\n      - " + build_step_name
+
+		# Construction du challenge
+		f.write(CHALL_TEMPLATE.format(
+			chall_name=chall,
+			dependencies=deps,
+			path=CHALLS_DIR + chall
+		))
+
+subprocess.run(["git", "add", GIT_ACT_PATH])

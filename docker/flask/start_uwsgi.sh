@@ -1,0 +1,1 @@
+/usr/sbin/uwsgi --ini /etc/uwsgi/uwsgi.ini

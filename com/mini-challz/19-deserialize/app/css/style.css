@@ -1,0 +1,63 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+}
+
+:root {
+    --primary: #fff;
+    --secondary: #aaa;
+    --color: #696969;
+}
+
+nav
+{
+    margin: auto;
+    width: 100%;
+    font-size: 1.2em;
+    display: flex;
+    background-color: var(--color);
+}
+
+nav div
+{
+    height: 64px;
+    padding: 10px;
+    width: 50%;
+    display: flex;
+    margin: auto;
+}
+
+nav a
+{
+    margin: 15px;
+    padding: 5px;
+    min-width: 100px;
+    text-decoration: none;
+    text-align: center;
+    color: var(--primary);
+}
+
+nav a:hover
+{
+    color: var(--secondary);
+}
+
+nav img
+{
+    width: 64px;
+}
+
+
+
+footer
+{
+    background-color: var(--color);
+    width: 100%;
+    padding: 25px 0;
+    margin: auto;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+}
+

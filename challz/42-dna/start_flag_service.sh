@@ -1,0 +1,1 @@
+python3 /challenge/secret_service.py &

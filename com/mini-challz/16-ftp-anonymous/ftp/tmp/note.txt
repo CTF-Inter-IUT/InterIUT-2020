@@ -1,0 +1,1 @@
+j'ai changé le mot de passe admin du FTP, il est dans le dossier de configuration.

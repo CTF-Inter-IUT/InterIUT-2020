@@ -1,0 +1,11 @@
+FROM alpine:latest
+
+ARG FLAG
+
+RUN apk add --no-cache --update nyancat bash
+
+RUN echo "${FLAG}" > /FLAG
+
+ADD ./entrypoint.sh /
+
+ENTRYPOINT ["bash", "-c", "/entrypoint.sh"]

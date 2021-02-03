@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- MDR STROMARRANT Y A UN FLAG -->
+	<!-- FLAG{POURQUOI RÉFELCHIR KAN ON A MSF?} -->
+    <title>H4ck3r 5h3lt3R</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+	<base href=".">
+</head>
+<body>
+	<header>
+		<pre>
+	 __          __  ____    _         _____    ___    __  __   ____  
+	 \ \        / / |___ \  | |       / ____|  / _ \  |  \/  | |___ \ 
+	  \ \  /\  / /    __) | | |      | |      | | | | | \  / |   __) |
+	   \ \/  \/ /    |__ <  | |      | |      | | | | | |\/| |  |__ < 
+	    \  /\  /     ___) | | |____  | |____  | |_| | | |  | |  ___) |
+	     \/  \/     |____/  |______|  \_____|  \___/  |_|  |_| |____/ 
+
+		</pre>
+		<img src="https://media.giphy.com/media/ohONS2y8GTDoI/giphy.gif" alt="">
+	</header>
+
+	<nav>
+		<h1>M1k4d0</h1>
+		<ul>
+			<li>14 an</li>
+			<li>Mâle</li>
+			<li>1f0s3c l3arn3r</li>
+		</ul>
+	</nav>
+
+	<section id="writeup_list">
+	    <article>
+	        <h2>Mè writueps</h2>
+	    	<ul>
+	    		{%for wu in wus%} 
+				<li><a href="/writeups?id={{wu[0]}}">[{{wu[2]}}] {{wu[1]}}</a></li>
+				{%endfor%}
+				<li></li>
+				{%for wu in wus_tc%} 
+				<li>[{{wu[2]}}] {{wu[1]}} a venire</li>
+				{%endfor%}
+	    	</ul>
+	    </article>
+
+	    <article>
+	        <h2>Lé tuto</h2>
+	    	<ul>
+	    		{%for t in tutos%} 
+				<li><a href="/tutos?id={{t[0]}}">[{{t[2]}}] {{t[1]}}</a></li>
+				{%endfor%}
+	    	</ul>
+	    </article>
+	</section>
+
+	<section id="garbage">
+		<p>
+			"MonSQL est un langage révolutionnaire qui va sûrement remplacer à jamais les autres."
+		</p>
+		<p class="author">- Un génie</p>
+	</section>
+</body>
+</html>

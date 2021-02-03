@@ -1,0 +1,12 @@
+# NE PAS EDITER : Ce fichier est généré par le script .githooks/pre-commit
+
+name: Docker
+
+on:
+  push:
+    # Publish master as Docker latest image.
+    branches:
+      - master
+
+jobs:
+

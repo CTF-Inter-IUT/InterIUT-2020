@@ -1,0 +1,57 @@
+<div id="stats">
+    <h1>Statistics</h1>
+    <div class="stats">
+        <p><span>3</span> total bots</p>
+    </div>
+    <div class="stats">
+        <p><span>2</span> online bots</p>
+    </div>
+    <div class="stats">
+        <p><span>1</span> offline bots</p>
+    </div>
+</div>
+
+<div id="bot-list">
+    <h1>Bot list</h1>  
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>IP</th>
+            <th>Name</th>
+            <th>Country</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>000</td>
+            <td>10.0.0.1</td>
+            <td>Bot</td>
+            <td>France</td>
+            <td>Online</td>
+        </tr>
+        <tr>
+            <td>001</td>
+            <td>10.2.0.6</td>
+            <td>Bo-johnt</td>
+            <td>Spain</td>
+            <td>Offline</td>
+        </tr>
+        <tr>
+            <td>002</td>
+            <td>14.6.30.1</td>
+            <td>Bot-Jack</td>
+            <td>Germany</td>
+            <td>Online</td>
+        </tr>
+    </table>
+</div>
+
+<div id="command">
+    <h1>Command center</h1>
+    <form method="post" action="/command-sent">
+        <div>
+            <label for="cmd">Command : </label>
+            <input type="text" name="cmd" id="cmd" placeholder="Command to execute...">
+        </div>
+        <input type="submit" name="submit" value="Send command !">
+    </form>
+</div>

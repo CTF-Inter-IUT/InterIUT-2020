@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<title>MonSQL</title>
+	<meta charset="utf-8">
+
+	<!-- Feuilles de style et polices d'écritures -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+	<link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed|Libre+Caslon+Text&display=swap" rel="stylesheet">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='img/anescie.png') }}" type="image/x-icon">
+
+	<!-- Meilleure gestion des cellulaires portatifs -->
+	<meta name="theme-color" content="#fff">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+</head>
+<body>
+
+	<header>
+		<div>
+			<img src="{{ url_for('static', filename='img/anescie.png') }}" class="logo" alt="Logo de l'ANESCIE">
+			<p>ANESCIE</p>
+		</div>
+	</header>
+	<article>
+		<h1>L'ANESCIE s'engage à maintenir MonSQL</h1>
+
+		<hr class="sous-titre">
+		<hr>
+
+		<p>
+			Dans la lignée du système d'exploitation (SE) français des développeurs talentueux ont développés un Langage Structuré de Demande (LSD). Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dignissim tortor eu blandit gravida. Maecenas odio nisl, pharetra pulvinar risus ac, rhoncus porttitor turpis. Aenean dapibus tortor tempus blandit tempus. Integer rhoncus dui in nibh consectetur, et tincidunt tortor rhoncus. Ut libero sapien, gravida a ex ac, sollicitudin egestas eros. Nulla facilisi. Cras facilisis, ligula et aliquet congue, tellus sapien gravida ante, ac efficitur nisi eros nec diam. Aenean blandit dui felis, eget pharetra quam tristique vitae. Aenean ut convallis velit. Sed felis erat, aliquam sit amet lacinia et, congue vel risus. Integer vel facilisis dui.
+		</p>
+
+		<h4>Logo de MonSQL</h4>
+		<img src="{{ url_for('static', filename='img/logo_monsql.png') }}" alt="Logo de MonSQL">
+
+		<p>
+			Pour que tout le monde puisse découvrir ce fabuleux langage de requête l'ANESCIE vient d'ouvrir sur cette page un champ dédié au test de requête. L'ANESCIE vous mets à disposition une base de données.
+			Contenant au moins la table utilisateurs.
+		</p>
+
+		<form action="javascript:soumettre()">
+			<input type="text" class="text" placeholder="SÉLECTIONNE TOUT ÀPARTIRDE utilisateurs"> 
+		</form>
+
+		<div id="resultat"></div>
+		<script type="text/javascript">
+			async function soumettre() {
+				var requete = document.querySelector('input').value;
+
+				const réponse = await fetch('/demo-monsql', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded'
+					},
+					body: "requete=" + requete
+				}).then(response => response.json());
+				
+				//Affiche le tableau des résultats
+				if (réponse.statut === 'ok') {
+					html_table = '<table>';
+					
+					for (var i = 0; i < réponse.résultat.length; i++) {
+						html_table += '<tbody><tr>';
+						for (var j = 0; j < réponse.résultat[i].length; j++) {
+							html_table += '<td>';
+							html_table += réponse.résultat[i][j];
+							html_table += '</td>';
+						}
+						html_table += '</tr></tbody>';
+					}
+					html_table += '</table>';
+					document.getElementById('resultat').innerHTML = html_table;
+				} else if (réponse.statut === 'ko') {
+					document.getElementById('resultat').innerText = réponse.résultat;
+				} else {
+					document.getElementById('resultat').innerText = 'La requête n\'a pas pu aboutir... Désolé.';
+				}
+				
+				return réponse;
+			}
+		</script>
+
+	</article>
+</body>
+</html>

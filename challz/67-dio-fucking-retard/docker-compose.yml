@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  chatbot:
+    image: node:lts-alpine
+    volumes:
+      - ./:/app
+    ports:
+      - 3000:3000
+    depends_on:
+      - database
+    working_dir: /app
+    entrypoint: yarn watch
+
+  database:
+    image: mongo
+    environment: 
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example

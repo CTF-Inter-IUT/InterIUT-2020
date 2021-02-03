@@ -1,0 +1,14 @@
+
+  Build_base_{base_img_name}:
+    runs-on: self-hosted 
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: docker/build-push-action@v1
+        with:
+          username: ${{{{ secrets.REGISTRY_USERNAME }}}}
+          password: ${{{{ secrets.REGISTRY_PASSWORD }}}}
+          registry: ${{{{ secrets.REGISTRY_URL }}}}
+          repository: interiut-base-{base_img_name}
+          path: {path}
+          tags: latest

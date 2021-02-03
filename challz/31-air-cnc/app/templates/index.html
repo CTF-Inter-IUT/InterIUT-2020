@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+    <head>
+        <title>BotNet admin panel</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo.png') }}">
+    </head>
+
+    <body>
+        <header>
+            <div id="logo">
+                <img src="{{ url_for('static', filename='img/logo.png') }}">
+                <p>Panel</p>
+            </div>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/settings">Settings</a>
+                <a href="/password-change">Change password</a>
+                <a href="/logout">Logout</a>
+            </nav>
+        </header>
+
+        {% if page == '/' %}
+        {% include 'home.html' %}
+
+        {% elif page == '/settings' %}
+        {% include 'settings.html' %}
+
+        {% elif page == '/password-change' %}
+        {% include 'password-change.html' %}
+
+        {% elif page == '/logout' %}
+        {% include 'logout.html' %}
+
+        {% endif %}
+
+        <footer>
+            BotNet admin panel
+        </footer>
+    </body>
+</html>

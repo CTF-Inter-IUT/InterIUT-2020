@@ -1,0 +1,5 @@
+User-Agent: *
+Disallow: /admin_login.php
+Disallow: /admin_logout.php
+Disallow: /admin_site.php
+Disallow: /you_will_never_find_the_first_flag.txt

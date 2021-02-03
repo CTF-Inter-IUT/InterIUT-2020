@@ -1,0 +1,58 @@
+{
+    "builders": [
+        {
+            "CPUs": 4,
+            "RAM": 2048,
+            "RAM_reserve_all": false,
+            "boot_command": [
+                "root<enter><wait>",
+                "mount -t vfat /dev/fd0 /media/floppy<enter><wait10>",
+                "setup-alpine -f /media/floppy/answerfile<enter>",
+                "<wait5>",
+                "interiut<enter>",
+                "interiut<enter>",
+                "y<enter>",
+                "<wait10><wait10>",
+                "reboot<enter>",
+                "<wait10><wait10>",
+                "root<enter>",
+                "interiut<enter><wait>",
+                "mount -t vfat /dev/fd0 /media/floppy<enter><wait>",
+                "/media/floppy/SETUP.SH<enter>"
+            ],
+            "boot_wait": "10s",
+            "host": "192.168.1.7",
+            "convert_to_template": true,
+            "datacenter": "Datacenter",
+            "disk_controller_type": "pvscsi",
+            "floppy_files": [
+                "{{template_dir}}/setup.sh",
+                "{{template_dir}}/answerfile"
+            ],
+            "guest_os_type": "other3xLinux64Guest",
+            "insecure_connection": true,
+            "iso_paths": [
+                "[datastore1] alpine-virt-3.12.0-x86_64.iso"
+            ],
+            "network_adapters": [
+                {
+                    "network": "interiut-network",
+                    "network_card": "vmxnet3"
+                }
+            ],
+            "ssh_password": "interiut",
+            "ssh_username": "root",
+            "storage": [
+                {
+                    "disk_size": 10000,
+                    "disk_thin_provisioned": true
+                }
+            ],
+            "type": "vsphere-iso",
+            "vcenter_server": "vsphere.interiut.ctf",
+            "username": "administrator@interiut.ctf",
+            "password": "yu-cren8RHAM2kerk",
+            "vm_name": "Alpine-interiut"
+        }
+    ]
+}

@@ -1,0 +1,4 @@
+FROM registry.alfred.cafe/interiut/interiut-base-flask
+
+COPY ./app/ /challenge/
+COPY ./start_flag_service.sh /docker-entrypoint.d/

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+	<title>Tea House Test</title>
+</head>
+<body>
+	<h1>Tea House Test</h1>
+
+	<p>
+		The Oracle has many enemies, I had to be sure.
+		Of what?
+		That you are The One.
+		You could have just asked.
+		No. You do not truly know someone... until you fight them.
+
+	</p>
+
+	<p id="important-part">
+		We'll start this journey by checking that you're not a Sentinel.
+		POST a request to the /challenge URL and decode this secret language. You must return the unleeted value with the key "payload".
+		<pre>curl -X POST --data "{'token': 'your_token', 'payload': 'unleeted_text'}" this.server/challenge</pre>
+	</p>
+</body>
+</html>

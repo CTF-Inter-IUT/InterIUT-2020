@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css?family=Anonymous+Pro&display=swap');
+
+:root {
+	--primary: #f5f0f0;
+	--secondary: #171a1c;
+	--accent: #ce050f;
+}
+
+*{
+	padding: 0;
+	margin: 0;
+	font-family: 'Anonymous Pro', monospace;
+	background-color: var(--secondary);
+	color: var(--primary);
+}
+
+h1
+{
+	font-size: 1.5em;
+	margin: 15px;
+}
+
+h2
+{
+	font-size: 1.3em;
+}
+
+h3
+{
+	font-size: 1.15em;
+}
+
+a
+{
+	border-bottom: 2px solid var(--accent);
+	text-decoration: none;
+	padding: 12px 18px;
+	font-size: 1.1em;
+}
+
+a:hover
+{
+	color: var(--accent);
+}
+
+input, button
+{
+	padding: 5px;
+	border: 2px solid var(--primary);
+}
+
+input:focus, button:hover
+{
+	border-color: var(--accent);
+}
+
+header, #admin_header
+{
+	padding: 10px;
+	margin-bottom: 15px;
+}
+
+header a, #admin_header a
+{
+	margin: 10px;
+}
+
+form
+{
+	width: 30%;
+	margin: auto;
+	padding: 25px;
+	border-radius: 15px;
+	border: 3px solid var(--primary);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+form > div
+{
+	width: 95%;
+	margin: auto;
+	margin: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+
+form > div > input
+{
+	width: 50%;
+}
+
+form > input
+{
+	width: 30%;
+}
+
+#container
+{
+	width: 70%;
+	margin: auto;
+}
+
+#container > p
+{
+	font-size: 1.2em;
+	line-height: 1.3;
+}
+
+#skull
+{
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+
+#skull > h1
+{
+	width: 50%;
+	text-align: center;
+	font-size: 50px;
+	letter-spacing: 7px;
+}
+
+#skull > img
+{
+	width: 400px;
+}
+
+div#articles
+{
+	width: 60%;
+	margin: auto;
+}
+
+div#articles > h2
+{
+	margin-top: 80px;
+}
+
+div#articles > p
+{
+	margin: 10px;
+	padding: 10px;
+	border-bottom: 2px dotted var(--accent);
+	text-indent: 20px;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<!-- coucou -->
+    <title>writueps</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+	<base href=".">
+</head>
+<body>
+	<header>
+		<a id="go-back" href="/">
+			<pre>
+   _____         _                _    
+  / ____|       | |              | |   
+ | |  __  ___   | |__   __ _  ___| | __
+ | | |_ |/ _ \  | '_ \ / _` |/ __| |/ /
+ | |__| | (_) | | |_) | (_| | (__|   < 
+  \_____|\___/  |_.__/ \__,_|\___|_|\_\
+   		
+			</pre>
+		</a>
+	</header>
+	
+	{% if must_login is defined%}
+	<div id="connect">
+		<p>
+			tapas lé droit
+		</p>
+
+		<form action="/writeups" method="get">
+			<input id="acc3ss_c0d3" name="acc3ss_c0d3" type="text" placeholder="password">
+			<input type="hidden" id="id" name="id" type="text" value="{{wu_id}}">
+		</form>
+	</div>
+	{% else %}
+	<div id="writeup">
+		{{wu|safe}}
+	</div>
+	{% endif %}
+
+
+
+</body>
+</html>

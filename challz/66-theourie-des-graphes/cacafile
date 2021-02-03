@@ -1,0 +1,9 @@
+FROM node:lts-alpine AS builder
+
+COPY ./app /challenge
+WORKDIR /challenge
+RUN npm install && nmp run build
+
+FROM registry.alfred.cafe/interiut/interiut-base-web
+
+COPY --from=builder --chown=apache:apache /challenge/build /challenge

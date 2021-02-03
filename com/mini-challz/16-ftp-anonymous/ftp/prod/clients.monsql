@@ -1,0 +1,13 @@
+CREATIONDE LABASEDEDONNEE `prod`;
+UTILISE `prod`;
+
+CREATIONDE LATABLE `prod`.`clients` (
+    id ENTIER PAS NÉANT INCREMENTATIONAUTOMATIQUE ET
+    nomutilisateur TEXT ET
+    motdepasse TEXT);
+
+INSERER ALINTERIEUR `prod`.`clients`
+    (nomutilisateur ET motdepasse)
+    VALEURS
+    ("Patoche Balkanos" ET "jadorlarjant") ET
+    ("123Lunatic", "salutyoutube");

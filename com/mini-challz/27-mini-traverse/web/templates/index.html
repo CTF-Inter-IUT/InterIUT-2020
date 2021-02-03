@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>🧙 Harry Potter's memo</title>
+		<link href="{{ url_for('static', filename='style.css' ) }}" rel="stylesheet">
+		<!-- Compiled and minified CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+
+	</head>
+	<body onclick="document.getElementById('musicc').play()">
+		<div class="container">
+			{% if file_content is defined %}
+				{{ file_content|safe }}
+			{% else %}
+				<h1 id='spell_not_found'>Ce sort n'existe pas</h1>
+				<img src="{{ url_for('static', filename='404.jpg' ) }}" alt="Angry hagrid"/>
+			{% endif %}
+		</div>
+
+		<audio id="musicc" loop autoplay>
+			<source src="{{ url_for('static', filename='harry_pouttar.mp3' ) }}" type="audio/mpeg">
+		</audio>
+
+		<!-- Compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	</body>
+</html>

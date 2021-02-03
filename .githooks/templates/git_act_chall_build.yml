@@ -1,0 +1,14 @@
+
+  Build_{chall_name}:
+    runs-on: self-hosted 
+    {dependencies}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: docker/build-push-action@v1
+        with:
+          username: ${{{{ secrets.REGISTRY_USERNAME }}}}
+          password: ${{{{ secrets.REGISTRY_PASSWORD }}}}
+          registry: ${{{{ secrets.REGISTRY_URL }}}}
+          repository: {chall_name}
+          tags: latest
+          path: {path}

@@ -1,0 +1,17 @@
+providers:
+  docker:
+    exposedByDefault: false
+    network: ${docker_network}
+
+api:
+  insecure: true
+
+entryPoints:
+  http:
+    address: ":80"
+
+%{ for chall in tcp_challenges ~}
+  ${chall.path}:
+    address: ":${chall.port}"
+%{ endfor ~}
+

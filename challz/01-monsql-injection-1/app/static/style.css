@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed|Libre+Caslon+Text&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+header {
+	border-bottom: 18px solid #002a44;
+	height: 8em;
+}
+
+header div {
+	display: flex;
+	justify-content: start;
+
+	width: 70%;
+	height: 100%;
+	margin: auto;
+}
+
+header p {
+	line-height: 20px;
+	font-size: 36px;
+	margin: auto 0.5em;
+}
+
+.logo {
+	height: 85px;
+	margin: auto 0 auto 0;
+}
+
+article {
+	width: 70%;
+	text-align: justify;
+	margin: auto;
+	margin-bottom: 5em;
+}
+
+h1 {
+	font-family: 'Fira Sans Condensed';
+	font-size: 1.5em;
+	color: #003f65;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+
+	margin-top: 2em;
+}
+
+hr {
+	background-color: #dcdcdc;
+	color: transparent;
+	height: 1px;
+
+	margin-bottom: 2em;
+}
+
+.sous-titre {
+	width: 60px;
+	height: 4px;
+
+	background-color: #003f65;
+
+	margin: 1em auto 2em auto;
+}
+
+p {
+	line-height: 1.286;
+	font-size: 0.98rem;
+	color: #333;
+
+	margin-bottom: 2em;
+}
+
+h4 {
+	font-family: 'Fira Sans Condensed';
+	font-size: 1.2rem;
+	line-height: 1.2;
+	letter-spacing: 1.5px;
+	text-align: center;
+}
+
+article img {
+	height: 128px;
+	margin: 1em auto 2em auto;
+	display: block;
+}
+
+input {
+	border: 3px solid #eee;
+	padding: 5px;
+	width: 50%;
+	margin: auto;
+	display: block;
+}
+
+#resultat {
+	margin-top: 1em;
+	text-align: center;
+}
+
+::-webkit-input-placeholder {
+   text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;  
+}
+
+:-ms-input-placeholder {  
+   text-align: center; 
+}
+
+table {
+	margin: auto;
+	border-collapse: collapse;
+}
+
+table td, table th {
+  border: 3px solid #ddd;
+  padding: 8px;
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}

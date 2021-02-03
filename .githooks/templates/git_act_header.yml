@@ -1,0 +1,12 @@
+# NE PAS EDITER : Ce fichier est généré par le script {script_name}
+
+name: Docker
+
+on:
+  push:
+    # Publish master as Docker latest image.
+    branches:
+      - master
+
+jobs:
+
